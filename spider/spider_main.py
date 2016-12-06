@@ -5,7 +5,7 @@ import re
 max_page = 5
 url_base = "http://www.qiushibaike.com/hot/"
 fruits = ['banana', 'apple',  'mango']
-fout = open('output.html', 'w')
+fout = open('spider/output.html', 'w')
 fout.write("<html>")
 fout.write("<body>")
 for page_num in range(1,max_page+1):
@@ -44,6 +44,7 @@ for page_num in range(1,max_page+1):
     fout.write("<table>")
     fout.write("<tr>")
     fout.write("<td>序号</td>")
+    fout.write("<td>作者</td>")
     fout.write("<td>内容</td>")
     fout.write("<td>赞数</td>")
     fout.write("<td>评论数</td>")
@@ -53,6 +54,7 @@ for page_num in range(1,max_page+1):
         count = count + 1
         print count, item[0], item[1], item[2], item[3]
         fout.write("<td>%d</td>" % count)
+        fout.write("<td>%s</td>" % item[0].encode('utf-8'))
         fout.write("<td>%s</td>" % item[1].encode('utf-8'))
         fout.write("<td>%s</td>" % item[2].encode('utf-8'))
         fout.write("<td>%s</td>" % item[3].encode('utf-8'))
